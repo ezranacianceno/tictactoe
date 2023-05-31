@@ -1,0 +1,91 @@
+
+/* Google Font*/
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+
+/* CSS Reset */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* CSS Variables*/
+
+:root {
+    --jost-font: Jost, sans-serif;
+    --background-color: black;
+    --main-font-color: white;
+    --playerX-color: #A459D1;
+    --playerY-color: #FFB84C;
+}
+
+main {
+    font-family: var(--jost-font);
+    color: var(--main-font-color);
+}
+
+.background {
+    background-color: var(--background-color);
+    height: 100vh;
+    padding-top: 1px;
+}
+
+.title {
+    color: var(--main-font-color);
+    text-align: center;
+    font-size: 40px;
+    /* margin-top: 20px; */
+}
+
+.display {
+    color: var(--main-font-color);
+    font-size: 25px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* class to hide an element */
+.hide {
+    display: none;
+}
+
+.container {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 33% 33% 33%;
+    max-width: 300px;
+}
+
+.tile {
+    border: 1px solid white;
+    min-width: 100px;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+/* player colors */
+
+.playerX {
+    color: var(--playerX-color);
+}
+
+.playerY {
+    color: var(--playerY-color);
+}
+
+/* controls section */
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
