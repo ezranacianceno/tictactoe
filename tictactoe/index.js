@@ -2,12 +2,12 @@
 window.addEventListener('DOMContentLoaded', () => {
 
     const tiles = Array.from(document.querySelectorAll('.tile'));
-
-    const playerDisplay = document.querySelector('.reset');
+    const playerDisplay = document.querySelector('.display-player');
+    const resetButton = document.querySelector('#reset');
     const announcer = document.querySelector('.announcer');
 
     // array with 9 empty strings that will serve as the board
-    let board = ['', '', '', '', '', '', '', '', '', '']
+    let board = ['', '', '', '', '', '', '', '', ''];
     let currentPlayer = 'X';
     let isGameActive = true;
 
@@ -25,11 +25,11 @@ window.addEventListener('DOMContentLoaded', () => {
     */
 
     const winningConditions = [
-        [0, 1 ,2],
-        [3, 4 ,5],
-        [6, 7 ,8],
-        [0, 3 ,6],
-        [1, 4 ,7],
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
         [2, 5, 8],
         [0, 4, 8],
         [2, 4, 6]
@@ -37,7 +37,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function handleResultValidation() {
         let roundWon = false;
-        for(let i = 0; i <= 7; i++) {
+        for (let i = 0; i <= 7; i++) {
             const winCondition = winningConditions[i];
             const a = board[winCondition[0]];
             const b = board[winCondition[1]];
@@ -73,11 +73,24 @@ window.addEventListener('DOMContentLoaded', () => {
                 announcer.innerHTML = 'Player <span class="playerX">X</span> Won';
                 break;
             case TIE:
-                announcer.Text = 'Tie';
+                announcer.innerText = 'Tie';
         }
         // removes class hide to show the announcer element
         announcer.classList.remove('hide');
     };
+
+    // makes sure to only use empty tiles
+    const isValidAction = (tile) => {
+        if (tile.innerText === 'X' || tile.innerText === 'O'){
+            return false;
+        }
+        return true;
+    };
+
+    // updates the board tile according to current player?
+    const updateBoard = (index) => {
+        board[index] = currentPlayer;
+    }
 
     const changePlayer = () => {
         // remove the css class playerX or playerO
@@ -103,6 +116,23 @@ window.addEventListener('DOMContentLoaded', () => {
             handleResultValidation();
             changePlayer();
         }
+    }
+
+    // resets game state and the board
+    const resetBoard = () => {
+        board = ['', '', '', '', '', '', '', '', ''];
+        isGameActive = true;
+        announcer.classList.add('hide');
+
+        if (currentPlayer === 'O') {
+            changePlayer();
+        }
+
+        tiles.forEach(tile => {
+            tile.innerText = '';
+            tile.classList.remove('playerX');
+            tile.classList.remove('playerO');
+        });
     }
 
     // click event listener to every single tile

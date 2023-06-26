@@ -17,7 +17,7 @@
     --background-color: black;
     --main-font-color: white;
     --playerX-color: #A459D1;
-    --playerY-color: #FFB84C;
+    --playerO-color: #FFB84C;
 }
 
 main {
@@ -60,7 +60,7 @@ main {
 }
 
 .tile {
-    border: 1px solid white;
+    border: 1px solid var(--main-font-color);
     min-width: 100px;
     min-height: 100px;
     display: flex;
@@ -76,8 +76,8 @@ main {
     color: var(--playerX-color);
 }
 
-.playerY {
-    color: var(--playerY-color);
+.playerO {
+    color: var(--playerO-color);
 }
 
 /* controls section */
@@ -88,4 +88,14 @@ main {
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+}
+
+#reset {
+    border: none;
+    padding: 10px 25px;
+    color: var(--main-font-color);
+    background-color: var(--playerX-color);
+    border-radius: 20px;
+    font-size: 18px;
+    font-family: var(--jost-font);
 }
